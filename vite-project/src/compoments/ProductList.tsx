@@ -27,7 +27,7 @@ const ProductList: React.FC<ProductListProps> = ({ products, onAddToCart }) => {
               <button
                 className="btn btn-primary"
                 onClick={() => onAddToCart(product)}
-                disabled={product.quantity === 0} // Disable button if quantity is zero
+                disabled={product.quantity === 0} 
               >
                 {product.price}K $
               </button>

@@ -1,16 +1,16 @@
-// Cart.tsx
 import React from 'react';
 import { CartItem } from './interfaces';
 
 interface CartProps {
   cartItems: CartItem[];
-  onUpdate: (index: number, quantity: number) => void;
+  onUpdateQuantity: (index: number, quantity: number) => void;
+  onUpdate: () => void;
   onDelete: (index: number) => void;
 }
 
-const Cart: React.FC<CartProps> = ({ cartItems, onUpdate, onDelete }) => {
+const Cart: React.FC<CartProps> = ({ cartItems, onUpdateQuantity, onUpdate, onDelete }) => {
   const handleQuantityChange = (index: number, quantity: number) => {
-    onUpdate(index, quantity);
+    onUpdateQuantity(index, quantity);
   };
 
   return (
@@ -21,8 +21,8 @@ const Cart: React.FC<CartProps> = ({ cartItems, onUpdate, onDelete }) => {
       <div className="panel-body">
         <table className="table">
           <thead>
-          <tr>
-            <th style={{ width: '4%' }}>STT</th>
+            <tr>
+              <th style={{ width: '4%' }}>STT</th>
               <th>Name</th>
               <th style={{ width: '15%' }}>Price</th>
               <th style={{ width: '4%' }}>Quantity</th>
@@ -44,7 +44,7 @@ const Cart: React.FC<CartProps> = ({ cartItems, onUpdate, onDelete }) => {
                   />
                 </td>
                 <td>
-                  <button className="btn btn-info" onClick={() => onUpdate(index, item.quantity)}>Update</button>
+                  <button className="btn btn-info" onClick={onUpdate}>Update</button>
                   <button className="btn btn-danger" onClick={() => onDelete(index)}>Delete</button>
                 </td>
               </tr>
